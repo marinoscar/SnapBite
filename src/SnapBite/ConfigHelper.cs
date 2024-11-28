@@ -43,10 +43,24 @@ namespace SnapBite
             foreach (var doc in _documents)
             {
                 var root = doc.RootElement;
-                if (!root.TryGetProperty(property, out var value)) continue;
-                return value;
+                var result = GetValueRecursive(root, property.Split(':'));
+                if (result.HasValue) return result;
             }
             return null;
+        }
+
+        private static JsonElement? GetValueRecursive(JsonElement element, string[] propertyPath, int index = 0)
+        {
+            if (index >= propertyPath.Length)
+                return element; // Base case: reached the target value
+
+            if (element.TryGetProperty(propertyPath[index], out var nextElement))
+            {
+                // Recur to the next level in the path
+                return GetValueRecursive(nextElement, propertyPath, index + 1);
+            }
+
+            return null; // Property not found
         }
 
         /// <summary>
