@@ -5,6 +5,8 @@ VisualStudioVersion = 17.12.35521.163
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Luval.SnapBite.Web", "Luval.SnapBite.Web\Luval.SnapBite.Web.csproj", "{FBF81558-5C7C-487B-93E8-9A6B9C40DA8A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnapBite", "SnapBite\SnapBite.csproj", "{417190F8-E34D-4A4F-9600-A91B7A1FDD39}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{FBF81558-5C7C-487B-93E8-9A6B9C40DA8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FBF81558-5C7C-487B-93E8-9A6B9C40DA8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FBF81558-5C7C-487B-93E8-9A6B9C40DA8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{417190F8-E34D-4A4F-9600-A91B7A1FDD39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{417190F8-E34D-4A4F-9600-A91B7A1FDD39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{417190F8-E34D-4A4F-9600-A91B7A1FDD39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{417190F8-E34D-4A4F-9600-A91B7A1FDD39}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
