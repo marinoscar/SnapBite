@@ -7,6 +7,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Luval.SnapBite.Web", "Luval
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnapBite", "SnapBite\SnapBite.csproj", "{417190F8-E34D-4A4F-9600-A91B7A1FDD39}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Luval.AuthMate", "..\..\AuthMate\src\Luval.AuthMate\Luval.AuthMate.csproj", "{1AF2F7C5-13F8-4622-A9D9-C4866455A11D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AuthMate", "AuthMate", "{80F5FC0A-CC49-415D-B88B-958838EB3369}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Luval.AuthMate.Postgres", "..\..\AuthMate\src\Luval.AuthMate.Postgres\Luval.AuthMate.Postgres.csproj", "{12CBC455-FF34-4C8C-916B-6CDC8C9343FD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,8 +27,20 @@ Global
 		{417190F8-E34D-4A4F-9600-A91B7A1FDD39}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{417190F8-E34D-4A4F-9600-A91B7A1FDD39}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{417190F8-E34D-4A4F-9600-A91B7A1FDD39}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1AF2F7C5-13F8-4622-A9D9-C4866455A11D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AF2F7C5-13F8-4622-A9D9-C4866455A11D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AF2F7C5-13F8-4622-A9D9-C4866455A11D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AF2F7C5-13F8-4622-A9D9-C4866455A11D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12CBC455-FF34-4C8C-916B-6CDC8C9343FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12CBC455-FF34-4C8C-916B-6CDC8C9343FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12CBC455-FF34-4C8C-916B-6CDC8C9343FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12CBC455-FF34-4C8C-916B-6CDC8C9343FD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1AF2F7C5-13F8-4622-A9D9-C4866455A11D} = {80F5FC0A-CC49-415D-B88B-958838EB3369}
+		{12CBC455-FF34-4C8C-916B-6CDC8C9343FD} = {80F5FC0A-CC49-415D-B88B-958838EB3369}
 	EndGlobalSection
 EndGlobal

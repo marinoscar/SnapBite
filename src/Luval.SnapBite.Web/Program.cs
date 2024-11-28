@@ -36,6 +36,9 @@ namespace Luval.SnapBite.Web
             app.Run();
         }
 
+        /// <summary>
+        /// Reads the configuration files
+        /// </summary>
         private static void LoadConfig()
         {
             var envVar = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
