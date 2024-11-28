@@ -1,4 +1,5 @@
 using Luval.SnapBite.Web.Components;
+using SnapBite;
 
 namespace Luval.SnapBite.Web
 {
@@ -6,6 +7,8 @@ namespace Luval.SnapBite.Web
     {
         public static void Main(string[] args)
         {
+            LoadConfig();
+
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
@@ -31,6 +34,20 @@ namespace Luval.SnapBite.Web
                 .AddInteractiveServerRenderMode();
 
             app.Run();
+        }
+
+        private static void LoadConfig()
+        {
+            var envVar = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+            var isDev = (string.IsNullOrWhiteSpace(envVar) || envVar == "Development");
+
+            var fileName = "{type}{env}.json";
+            var location = Path.Combine(AppContext.BaseDirectory, fileName);
+            var env = isDev ? ".debug" : "";
+
+            ConfigHelper.AddJsonDocument(File.ReadAllText(location.Replace("{type}", "config").Replace("{env}", env)));
+            ConfigHelper.AddJsonDocument(File.ReadAllText(location.Replace("{type}", "private").Replace("{env}", env)));
+
         }
     }
 }
