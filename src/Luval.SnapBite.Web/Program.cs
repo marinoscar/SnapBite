@@ -1,6 +1,10 @@
+using Luval.AuthMate;
 using Luval.AuthMate.OAuth;
+using Luval.AuthMate.Postgres;
 using Luval.SnapBite.Web.Components;
+using Microsoft.AspNetCore.Authentication.OAuth;
 using SnapBite;
+using System.Security.Claims;
 
 namespace Luval.SnapBite.Web
 {
@@ -24,10 +28,41 @@ namespace Luval.SnapBite.Web
             builder.Services.AddHttpClient();
             builder.Services.AddHttpContextAccessor();
 
+            // Configure AuthMate
+            var authService = new AuthMateService(
+                    new PostgresAuthMateContext(ConfigHelper.GetValueAsString("ConnectionString:Authorization")),
+                    "Free", "Administrator"
+                );
+
+            Func<OAuthCreatingTicketContext, Task> onTicket = async contex =>
+            {
+                var appUser = contex.HttpContext.User.ToUser();
+                var newUser = await authService.CreateUserAsAdminAsync(appUser);
+                //add full json object
+                contex.Identity?.AddClaim(new Claim("appuser", newUser.ToString()));
+                //add roles
+                foreach (var role in newUser.UserRoles)
+                {
+                    if(role != null && role.Role != null)
+                        contex.Identity?.AddClaim(new Claim(ClaimTypes.Role, role.Role.Name));
+                }
+                // id, account and others
+                contex.Identity?.AddClaim(new Claim("AppUserId", newUser.Id.ToString()));
+                var account = newUser.UserInAccounts.ToList().FirstOrDefault();
+                if(account != null)
+                    contex.Identity?.AddClaim(new Claim("AppUserAccountId", newUser.UserInAccounts.First().AccountId.ToString()));
+                // account Active
+                var activeDate = newUser.UtcActiveUntil ?? DateTime.UtcNow.AddYears(5);
+                contex.Identity?.AddClaim(new Claim("AppUserUtcActiveUntil", activeDate.ToString("u")));
+
+                return;
+            };
+
             // Add Google Authentication
             builder.Services.AddGoogleAuth(new GoogleOAuthConfiguration() { 
                 ClientId = ConfigHelper.GetValueAsString("Authentication:Google:ClientID"),
-                ClientSecret = ConfigHelper.GetValueAsString("Authentication:Google:ClientSecret")
+                ClientSecret = ConfigHelper.GetValueAsString("Authentication:Google:ClientSecret"),
+                OnCreatingTicket = onTicket
             });
 
             /* END CUSTOM CONFIGURATION */
