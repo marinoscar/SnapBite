@@ -1,4 +1,5 @@
-﻿@inject IHttpContextAccessor context
+﻿@using Luval.AuthMate.Entities
+@inject IHttpContextAccessor context
 
 <div class="row">
     <div class="col">
@@ -6,5 +7,11 @@
         {
             <a class="btn btn-secondary" href="/auth/google-login">Loging with Google</a>
         }
+        else{
+            <a class="btn btn-secondary" href="/auth/logout">Logout</a>
+        }
     </div>
 </div>
+
+@code{
+}

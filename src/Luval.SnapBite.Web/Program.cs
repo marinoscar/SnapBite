@@ -25,7 +25,10 @@ namespace Luval.SnapBite.Web
             builder.Services.AddHttpContextAccessor();
 
             // Add Google Authentication
-            builder.Services.AddGoogleAuth(new GoogleOAuthConfiguration());
+            builder.Services.AddGoogleAuth(new GoogleOAuthConfiguration() { 
+                ClientId = ConfigHelper.GetValueAsString("Authentication:Google:ClientID"),
+                ClientSecret = ConfigHelper.GetValueAsString("Authentication:Google:ClientSecret")
+            });
 
             /* END CUSTOM CONFIGURATION */
 
@@ -41,8 +44,18 @@ namespace Luval.SnapBite.Web
 
             app.UseHttpsRedirection();
 
+            /*******/
+            app.MapControllers();
+            app.MapBlazorHub();
+            app.UseRouting();
+            app.UseAuthorization();
+            app.UseAuthentication();
+            /*******/
+
             app.UseStaticFiles();
             app.UseAntiforgery();
+
+           
 
             app.MapRazorComponents<App>()
                 .AddInteractiveServerRenderMode();
