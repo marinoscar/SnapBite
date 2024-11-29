@@ -29,14 +29,18 @@ namespace Luval.SnapBite.Web
             builder.Services.AddHttpContextAccessor();
 
             // Configure AuthMate
+            var dbContext = new PostgresAuthMateContext(ConfigHelper.GetValueAsString("ConnectionString:Authorization"));
+            
             var authService = new AuthMateService(
-                    new PostgresAuthMateContext(ConfigHelper.GetValueAsString("ConnectionString:Authorization")),
+                    dbContext,
                     "Free", "Administrator"
                 );
 
             Func<OAuthCreatingTicketContext, Task> onTicket = async contex =>
             {
-                var appUser = contex.HttpContext.User.ToUser();
+                var appUser = contex.Identity.ToUser();
+                appUser.ProviderType = "Google";
+
                 var newUser = await authService.CreateUserAsAdminAsync(appUser);
                 //add full json object
                 contex.Identity?.AddClaim(new Claim("appuser", newUser.ToString()));
@@ -48,6 +52,8 @@ namespace Luval.SnapBite.Web
                 }
                 // id, account and others
                 contex.Identity?.AddClaim(new Claim("AppUserId", newUser.Id.ToString()));
+                contex.Identity?.AddClaim(new Claim("providerName", "Google"));
+
                 var account = newUser.UserInAccounts.ToList().FirstOrDefault();
                 if(account != null)
                     contex.Identity?.AddClaim(new Claim("AppUserAccountId", newUser.UserInAccounts.First().AccountId.ToString()));

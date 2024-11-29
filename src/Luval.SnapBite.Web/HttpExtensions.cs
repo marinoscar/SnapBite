@@ -14,17 +14,22 @@ namespace Luval.SnapBite.Web
 
         public static AppUser ToUser(this ClaimsPrincipal identity)
         {
+            return ToUser((ClaimsIdentity)identity.Identity);
+        }
+
+        public static AppUser ToUser(this ClaimsIdentity identity)
+        {
             return new AppUser()
             {
                 ProviderType = identity.GetValue("providerName"),
                 ProviderKey = identity.GetValue(ClaimTypes.NameIdentifier),
-                DisplayName = identity.GetValue(ClaimTypes.GivenName),
+                DisplayName = identity.GetValue(ClaimTypes.Name),
                 Email = identity.GetValue(ClaimTypes.Email),
                 ProfilePictureUrl = identity.GetValue("urn:google:image")
             };
         }
 
-        public static string? GetValue(this ClaimsPrincipal c, string type)
+        public static string? GetValue(this ClaimsIdentity c, string type)
         {
             if (c == null) return null;
             if (!c.HasClaim(i => i.Type == type)) return null;
