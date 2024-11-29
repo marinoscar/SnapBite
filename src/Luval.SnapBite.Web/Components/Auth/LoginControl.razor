@@ -1,0 +1,10 @@
+﻿@inject IHttpContextAccessor context
+
+<div class="row">
+    <div class="col">
+        @if (!context.IsAuthenticated())
+        {
+            <a class="btn btn-secondary" href="/auth/google-login">Loging with Google</a>
+        }
+    </div>
+</div>

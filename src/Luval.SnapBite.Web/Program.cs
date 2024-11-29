@@ -1,3 +1,4 @@
+using Luval.AuthMate.OAuth;
 using Luval.SnapBite.Web.Components;
 using SnapBite;
 
@@ -14,6 +15,19 @@ namespace Luval.SnapBite.Web
             // Add services to the container.
             builder.Services.AddRazorComponents()
                 .AddInteractiveServerComponents();
+
+
+            /* BEGIN CUSTOM CONFIGURATION */
+
+            // Add controllers
+            builder.Services.AddControllers();
+            builder.Services.AddHttpClient();
+            builder.Services.AddHttpContextAccessor();
+
+            // Add Google Authentication
+            builder.Services.AddGoogleAuth(new GoogleOAuthConfiguration());
+
+            /* END CUSTOM CONFIGURATION */
 
             var app = builder.Build();
 
