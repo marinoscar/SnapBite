@@ -38,30 +38,7 @@ namespace Luval.SnapBite.Web
 
             Func<OAuthCreatingTicketContext, Task> onTicket = async contex =>
             {
-                var appUser = contex.Identity.ToUser();
-                appUser.ProviderType = "Google";
-
-                var newUser = await authService.CreateUserAsAdminAsync(appUser);
-                //add full json object
-                contex.Identity?.AddClaim(new Claim("appuser", newUser.ToString()));
-                //add roles
-                foreach (var role in newUser.UserRoles)
-                {
-                    if(role != null && role.Role != null)
-                        contex.Identity?.AddClaim(new Claim(ClaimTypes.Role, role.Role.Name));
-                }
-                // id, account and others
-                contex.Identity?.AddClaim(new Claim("AppUserId", newUser.Id.ToString()));
-                contex.Identity?.AddClaim(new Claim("providerName", "Google"));
-
-                var account = newUser.UserInAccounts.ToList().FirstOrDefault();
-                if(account != null)
-                    contex.Identity?.AddClaim(new Claim("AppUserAccountId", newUser.UserInAccounts.First().AccountId.ToString()));
-                // account Active
-                var activeDate = newUser.UtcActiveUntil ?? DateTime.UtcNow.AddYears(5);
-                contex.Identity?.AddClaim(new Claim("AppUserUtcActiveUntil", activeDate.ToString("u")));
-
-                return;
+                await authService.OnUserAuthorizedAsync(contex.Identity, "Google", null);
             };
 
             // Add Google Authentication
