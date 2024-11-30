@@ -35,5 +35,10 @@ namespace Luval.SnapBite.Web
             if (!c.HasClaim(i => i.Type == type)) return null;
             return c.Claims.First(i => i.Type == type).Value;
         }
+
+        public static string? GetValue(this ClaimsPrincipal c, string type)
+        {
+            return GetValue((ClaimsIdentity)c.Identity, type);
+        }
     }
 }

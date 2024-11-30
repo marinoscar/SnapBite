@@ -67,7 +67,7 @@ namespace Luval.SnapBite.Web
 
             /*** Adds support for controllers     ****/
             app.MapControllers();
-            app.MapBlazorHub();
+            //app.MapBlazorHub();
             app.UseRouting();
             app.UseAuthorization();
             app.UseAuthentication();
