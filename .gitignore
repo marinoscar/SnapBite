@@ -397,3 +397,4 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 src/Luval.SnapBite.Web/private*.json
+/src/Luval.SnapBite.Fluent/private.debug.json
