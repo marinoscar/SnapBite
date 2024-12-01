@@ -13,6 +13,27 @@ namespace SnapBite
         private static List<JsonDocument> _documents = new List<JsonDocument>();
 
         /// <summary>
+        /// Loads the information from the configuration files into memory
+        /// </summary>
+        public static void Load()
+        {
+            var envVar = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+            var isDev = (string.IsNullOrWhiteSpace(envVar) || envVar == "Development");
+
+            var fileName = "{type}{env}.json";
+            var location = Path.Combine(AppContext.BaseDirectory, fileName);
+            var env = isDev ? ".debug" : "";
+
+            var publicFileName = location.Replace("{type}", "config").Replace("{env}", env);
+            var privateFileName = location.Replace("{type}", "private").Replace("{env}", env);
+
+            if(File.Exists(publicFileName))
+                ConfigHelper.AddJsonDocument(File.ReadAllText(publicFileName));
+            if (File.Exists(privateFileName))
+                ConfigHelper.AddJsonDocument(File.ReadAllText(privateFileName));
+        }
+
+        /// <summary>
         /// Adds a JSON document to the collection.
         /// </summary>
         /// <param name="json">The JSON string to parse and add.</param>

@@ -1,0 +1,10 @@
+{
+  "Authentication": {
+    "Google": {
+      "ClientSecret": "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"
+    }
+  },
+  "ConnectionString": {
+    "Authorization": "Host=localhost;Port=5432;Database=authmate;Username=postgres;Password=Mar1n1983!;"
+  }
+}
