@@ -1,4 +1,6 @@
-﻿using Luval.AuthMate.Entities;
+﻿using Luval.AuthMate;
+using Luval.AuthMate.Entities;
+using SnapBite;
 using System.Security.Claims;
 
 namespace Luval.SnapBite.Fluent
@@ -12,6 +14,19 @@ namespace Luval.SnapBite.Fluent
                 c.HttpContext.User.Identity.IsAuthenticated;
         }
 
-        
+
+        public static bool IsPowerUser(this ClaimsPrincipal c)
+        {
+            return IsPowerUser((ClaimsIdentity)c.Identity);
+        }
+
+        public static bool IsPowerUser(this ClaimsIdentity c)
+        {
+            var users = ConfigHelper.GetValue<List<string>>("Authentication:PowerUsers");
+            if (users == null) return false;
+            var email = c.GetValue(ClaimTypes.Email);
+            if (string.IsNullOrEmpty(email)) return false;
+            return users.Select(i => i.ToLowerInvariant()).Contains(email.ToLowerInvariant());
+        }
     }
 }

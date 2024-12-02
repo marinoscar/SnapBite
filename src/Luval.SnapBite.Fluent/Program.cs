@@ -5,6 +5,7 @@ using Luval.AuthMate.Postgres;
 using Luval.AuthMate;
 using Microsoft.AspNetCore.Authentication.OAuth;
 using SnapBite;
+using Luval.SnapBite.Fluent;
 
 
 ConfigHelper.Load();
@@ -28,7 +29,9 @@ var authService = new AuthMateService(
 // Function to be called after the user is authorized by Google
 Func<OAuthCreatingTicketContext, Task> onTicket = async contex =>
 {
-    //await authService.OnUserAuthorizedAsync(contex.Identity, "Google", null);
+    if (contex.Identity.IsPowerUser())
+        await authService.RegisterAdminUserAsync(contex.Identity.ToUser(), 
+            ConfigHelper.GetValueAsString("Authentication:DefaultAccountType"));
     
 };
 // Add Google Authentication configuration
