@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.12.35521.163
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Luval.SnapBite.Web", "Luval.SnapBite.Web\Luval.SnapBite.Web.csproj", "{FBF81558-5C7C-487B-93E8-9A6B9C40DA8A}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnapBite", "SnapBite\SnapBite.csproj", "{417190F8-E34D-4A4F-9600-A91B7A1FDD39}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Luval.AuthMate", "..\..\AuthMate\src\Luval.AuthMate\Luval.AuthMate.csproj", "{1AF2F7C5-13F8-4622-A9D9-C4866455A11D}"
@@ -15,16 +13,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Luval.AuthMate.Postgres", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Luval.SnapBite.Fluent", "Luval.SnapBite.Fluent\Luval.SnapBite.Fluent.csproj", "{610F39BB-DFE8-4A2E-84D3-FD87665C9F64}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Luval.AuthMate.Blazor", "..\..\AuthMate\src\Luval.AuthMate.Blazor\Luval.AuthMate.Blazor.csproj", "{D01807C6-84B4-4C91-B6D6-9F3EF71F50A9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{FBF81558-5C7C-487B-93E8-9A6B9C40DA8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FBF81558-5C7C-487B-93E8-9A6B9C40DA8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FBF81558-5C7C-487B-93E8-9A6B9C40DA8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FBF81558-5C7C-487B-93E8-9A6B9C40DA8A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{417190F8-E34D-4A4F-9600-A91B7A1FDD39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{417190F8-E34D-4A4F-9600-A91B7A1FDD39}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{417190F8-E34D-4A4F-9600-A91B7A1FDD39}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -41,6 +37,10 @@ Global
 		{610F39BB-DFE8-4A2E-84D3-FD87665C9F64}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{610F39BB-DFE8-4A2E-84D3-FD87665C9F64}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{610F39BB-DFE8-4A2E-84D3-FD87665C9F64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D01807C6-84B4-4C91-B6D6-9F3EF71F50A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D01807C6-84B4-4C91-B6D6-9F3EF71F50A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D01807C6-84B4-4C91-B6D6-9F3EF71F50A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D01807C6-84B4-4C91-B6D6-9F3EF71F50A9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,5 +48,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{1AF2F7C5-13F8-4622-A9D9-C4866455A11D} = {80F5FC0A-CC49-415D-B88B-958838EB3369}
 		{12CBC455-FF34-4C8C-916B-6CDC8C9343FD} = {80F5FC0A-CC49-415D-B88B-958838EB3369}
+		{D01807C6-84B4-4C91-B6D6-9F3EF71F50A9} = {80F5FC0A-CC49-415D-B88B-958838EB3369}
 	EndGlobalSection
 EndGlobal
