@@ -20,20 +20,26 @@ builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 builder.Services.AddFluentUIComponents();
 
-// Add controllers
+// AuthMate: Add support for controllers
 builder.Services.AddControllers();
 builder.Services.AddHttpClient();
 builder.Services.AddHttpContextAccessor();
-// Configure AuthMate
-var dbContext = new PostgresAuthMateContext(ConfigHelper.GetValueAsString("ConnectionString:Authorization"));
+
+// AuthMate: Configure the database implementation
+var dbContext = 
+    new PostgresAuthMateContext(ConfigHelper.GetValueAsString("ConnectionString:Authorization")); //postgres implementaion
+
+// AuthMate: Creates an instance of the service
 var authService = new AuthMateService(
-        dbContext
+        dbContext //provides the database context
     );
 
-// Function to be called after the user is authorized by Google
+// AuthMate: Function to be called after the user is authorized by Google
 Func<OAuthCreatingTicketContext, Task> onTicket = async context =>
 {
 
+    //Checks for the user in the database and performs other validations, see the implementation here
+    //https://github.com/marinoscar/AuthMate/blob/64b55c66f8bcd2534b5f8d8e02d1c3d1a439a9ef/src/Luval.AuthMate/AuthMateService.cs#L306
     await authService.UserAuthorizationProcessAsync(context.Identity, (u, c) =>
     {
         if (Debugger.IsAttached)
@@ -43,7 +49,7 @@ Func<OAuthCreatingTicketContext, Task> onTicket = async context =>
 
 
 };
-// Add Google Authentication configuration
+// AuthMate: Add Google Authentication configuration
 builder.Services.AddGoogleAuth(new GoogleOAuthConfiguration()
 {
     // client id from your config file
@@ -66,12 +72,12 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-/*** Adds support for controllers     ****/
+/*** AuthMate: Additional configuration  ****/
 app.MapControllers();
 app.UseRouting();
 app.UseAuthorization();
 app.UseAuthentication();
-/*** End code to suupport controllers ****/
+/*** AuthMate:                           ****/
 
 app.UseStaticFiles();
 app.UseAntiforgery();
