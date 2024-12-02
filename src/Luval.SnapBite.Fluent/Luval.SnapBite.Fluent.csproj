@@ -6,6 +6,10 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <EnableStaticWebAssets>true</EnableStaticWebAssets>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Microsoft.FluentUI.AspNetCore.Components" Version="4.*-*">
       <TreatAsUsed>true</TreatAsUsed>
@@ -14,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\AuthMate\src\Luval.AuthMate.Blazor\Luval.AuthMate.Blazor.csproj" />
     <ProjectReference Include="..\..\..\AuthMate\src\Luval.AuthMate.Postgres\Luval.AuthMate.Postgres.csproj" />
     <ProjectReference Include="..\..\..\AuthMate\src\Luval.AuthMate\Luval.AuthMate.csproj" />
     <ProjectReference Include="..\SnapBite\SnapBite.csproj" />
