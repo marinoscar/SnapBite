@@ -2,6 +2,7 @@
   "Authentication": {
     "Google": {
       "ClientID": "375586557138-vus4emsgvto2spe1ji53e803tplb2oci.apps.googleusercontent.com"
-    }
+    },
+    "PowerUsers": [ "oscar.marin.saenz@gmail.com" ]
   }
 }
