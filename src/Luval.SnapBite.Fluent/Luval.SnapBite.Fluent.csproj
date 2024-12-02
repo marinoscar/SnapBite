@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -7,13 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.FluentUI.AspNetCore.Components" Version="4.*-*" />
+    <PackageReference Include="Microsoft.FluentUI.AspNetCore.Components" Version="4.*-*">
+      <TreatAsUsed>true</TreatAsUsed>
+    </PackageReference>
     <PackageReference Include="Microsoft.FluentUI.AspNetCore.Components.Icons" Version="4.*-*" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\SnapBite\src\SnapBite\SnapBite.csproj" />
-    <ProjectReference Include="..\Luval.AuthMate.Postgres\Luval.AuthMate.Postgres.csproj" />
-    <ProjectReference Include="..\Luval.AuthMate\Luval.AuthMate.csproj" />
+    <ProjectReference Include="..\..\..\AuthMate\src\Luval.AuthMate.Postgres\Luval.AuthMate.Postgres.csproj" />
+    <ProjectReference Include="..\..\..\AuthMate\src\Luval.AuthMate\Luval.AuthMate.csproj" />
+    <ProjectReference Include="..\SnapBite\SnapBite.csproj" />
   </ItemGroup>
 </Project>

@@ -30,15 +30,14 @@ namespace Luval.SnapBite.Web
             var dbContext = new PostgresAuthMateContext(ConfigHelper.GetValueAsString("ConnectionString:Authorization"));
 
             var authService = new AuthMateService(
-                    dbContext,
-                    "Free", "Administrator"
+                    dbContext
                 );
 
 
             // Function to be called after the user is authorized by Google
             Func<OAuthCreatingTicketContext, Task> onTicket = async contex =>
             {
-                await authService.OnUserAuthorizedAsync(contex.Identity, "Google", null);
+                //await authService.OnUserAuthorizedAsync(contex.Identity, "Google", null);
             };
 
             // Add Google Authentication configuration

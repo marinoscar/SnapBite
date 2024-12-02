@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AuthMate", "AuthMate", "{80
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Luval.AuthMate.Postgres", "..\..\AuthMate\src\Luval.AuthMate.Postgres\Luval.AuthMate.Postgres.csproj", "{12CBC455-FF34-4C8C-916B-6CDC8C9343FD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Luval.SnapBite.Fluent", "Luval.SnapBite.Fluent\Luval.SnapBite.Fluent.csproj", "{610F39BB-DFE8-4A2E-84D3-FD87665C9F64}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,10 @@ Global
 		{12CBC455-FF34-4C8C-916B-6CDC8C9343FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{12CBC455-FF34-4C8C-916B-6CDC8C9343FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{12CBC455-FF34-4C8C-916B-6CDC8C9343FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{610F39BB-DFE8-4A2E-84D3-FD87665C9F64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{610F39BB-DFE8-4A2E-84D3-FD87665C9F64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{610F39BB-DFE8-4A2E-84D3-FD87665C9F64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{610F39BB-DFE8-4A2E-84D3-FD87665C9F64}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
