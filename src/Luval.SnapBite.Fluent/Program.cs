@@ -40,12 +40,21 @@ Func<OAuthCreatingTicketContext, Task> onTicket = async context =>
 
     //Checks for the user in the database and performs other validations, see the implementation here
     //https://github.com/marinoscar/AuthMate/blob/64b55c66f8bcd2534b5f8d8e02d1c3d1a439a9ef/src/Luval.AuthMate/AuthMateService.cs#L306
+
+    DeviceInfo deviceInfo = null;
+
+    if (context.Properties != null && 
+        context.Properties.Items != null && 
+        context.Properties.Items.ContainsKey("deviceInfo") &&
+        !string.IsNullOrWhiteSpace(context.Properties.Items["deviceInfo"]))
+            deviceInfo = DeviceInfo.FromString(context.Properties.Items["deviceInfo"]);
+
     await authService.UserAuthorizationProcessAsync(context.Identity, (u, c) =>
     {
         if (Debugger.IsAttached)
             Console.WriteLine($"User Id: {u.Id} Email {u.Email} Provider Key: {u.ProviderKey}");
 
-    }, CancellationToken.None);
+    }, deviceInfo, CancellationToken.None);
 
 
 };
