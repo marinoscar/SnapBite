@@ -11,7 +11,7 @@ namespace Luval.SnapBite.Fluent.Controllers
     {
         [AllowAnonymous]
         [HttpGet("google-login")] //This mathches the configuration of the Google Auth
-        public IActionResult GoogleLogin()
+        public IActionResult GoogleLogin(string deviceInfo, string returnUrl)
         {
 
             // Adds the properties ad redirect information
@@ -21,6 +21,9 @@ namespace Luval.SnapBite.Fluent.Controllers
             {
                 RedirectUri = "/"
             };
+
+            prop.Items.Add("deviceInfo", deviceInfo);
+            prop.Items.Add("returnUrl", returnUrl);
 
             // Creates tthe challange
             var challange = Challenge(prop, GoogleDefaults.AuthenticationScheme);
