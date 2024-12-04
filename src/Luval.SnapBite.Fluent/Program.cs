@@ -9,6 +9,8 @@ using Luval.SnapBite.Fluent;
 using System.Security.Claims;
 using Luval.AuthMate.Entities;
 using System.Diagnostics;
+using Microsoft.Extensions.DependencyInjection;
+using Luval.AuthMate.Blazor;
 
 
 ConfigHelper.Load();
@@ -34,13 +36,17 @@ var authService = new AuthMateService(
         dbContext //provides the database context
     );
 
+
+builder.Services.AddScoped<IAuthMateContext>((o) => new PostgresAuthMateContext(ConfigHelper.GetValueAsString("ConnectionString:Authorization")));
+builder.Services.AddScoped<IAuthMateService, AuthMateService>();
+
 // AuthMate: Function to be called after the user is authorized by Google
 Func<OAuthCreatingTicketContext, Task> onTicket = async context =>
 {
 
     //Checks for the user in the database and performs other validations, see the implementation here
     //https://github.com/marinoscar/AuthMate/blob/64b55c66f8bcd2534b5f8d8e02d1c3d1a439a9ef/src/Luval.AuthMate/AuthMateService.cs#L306
-
+    
     DeviceInfo deviceInfo = null;
 
     if (context.Properties != null && 
@@ -58,6 +64,10 @@ Func<OAuthCreatingTicketContext, Task> onTicket = async context =>
 
 
 };
+
+// AuthMate: Add Presenters
+builder.Services.AddAuthMateBlazorPresenters();
+
 // AuthMate: Add Google Authentication configuration
 builder.Services.AddGoogleAuth(new GoogleOAuthConfiguration()
 {
