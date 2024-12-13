@@ -41,7 +41,6 @@ builder.Services.AddAuthMateServices((f) => {
 Func<OAuthCreatingTicketContext, Task> onTicket = async context =>
 {
     var authService = builder.Services.BuildServiceProvider().GetRequiredService<AuthenticationService>();
-    context.Identity.AddClaim(new Claim("AppUserProviderType", "Google"));
 
     await authService.AuthorizeUserAsync(context.Identity, DeviceInfo.Create(context.Properties), CancellationToken.None);
 
