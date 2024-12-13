@@ -1,5 +1,4 @@
-﻿using Luval.AuthMate;
-using Luval.AuthMate.Entities;
+﻿using Luval.AuthMate.Core;
 using SnapBite;
 using System.Security.Claims;
 
