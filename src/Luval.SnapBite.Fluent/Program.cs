@@ -34,18 +34,10 @@ builder.Services.AddHttpContextAccessor();
 
 // AuthMate: add the AuthMate Services
 builder.Services.AddAuthMateServices((f) => {
+    //Configures database connection
     return new PostgresAuthMateContext(ConfigHelper.GetValueAsString("ConnectionString:Authorization"));
 });
 
-// AuthMate: Function to be called after the user is authorized by Google
-Func<OAuthCreatingTicketContext, Task> onTicket = async context =>
-{
-    var authService = builder.Services.BuildServiceProvider().GetRequiredService<AuthenticationService>();
-
-    await authService.AuthorizeUserAsync(context.Identity, DeviceInfo.Create(context.Properties), CancellationToken.None);
-
-
-};
 
 // AuthMate: Add Presenters
 builder.Services.AddAuthMateBlazorPresenters();
@@ -56,8 +48,7 @@ builder.Services.AddAuthMateGoogleAuth(new GoogleOAuthConfiguration()
     // client id from your config file
     ClientId = ConfigHelper.GetValueAsString("Authentication:Google:ClientID"),
     // the client secret from your config file
-    ClientSecret = ConfigHelper.GetValueAsString("Authentication:Google:ClientSecret"),
-    OnCreatingTicket = onTicket // function call
+    ClientSecret = ConfigHelper.GetValueAsString("Authentication:Google:ClientSecret")
 });
 
 
