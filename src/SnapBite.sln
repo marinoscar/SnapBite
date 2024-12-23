@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Luval.SnapBite.Fluent", "Lu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Luval.AuthMate.Blazor", "..\..\AuthMate\src\Luval.AuthMate.Blazor\Luval.AuthMate.Blazor.csproj", "{D01807C6-84B4-4C91-B6D6-9F3EF71F50A9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Luval.AuthMate.Tests", "..\..\AuthMate\src\Luval.AuthMate.Tests\Luval.AuthMate.Tests.csproj", "{D60CEE97-1C7D-442F-8F89-174282A6F1DD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,10 @@ Global
 		{D01807C6-84B4-4C91-B6D6-9F3EF71F50A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D01807C6-84B4-4C91-B6D6-9F3EF71F50A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D01807C6-84B4-4C91-B6D6-9F3EF71F50A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D60CEE97-1C7D-442F-8F89-174282A6F1DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D60CEE97-1C7D-442F-8F89-174282A6F1DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D60CEE97-1C7D-442F-8F89-174282A6F1DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D60CEE97-1C7D-442F-8F89-174282A6F1DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -49,5 +55,6 @@ Global
 		{1AF2F7C5-13F8-4622-A9D9-C4866455A11D} = {80F5FC0A-CC49-415D-B88B-958838EB3369}
 		{12CBC455-FF34-4C8C-916B-6CDC8C9343FD} = {80F5FC0A-CC49-415D-B88B-958838EB3369}
 		{D01807C6-84B4-4C91-B6D6-9F3EF71F50A9} = {80F5FC0A-CC49-415D-B88B-958838EB3369}
+		{D60CEE97-1C7D-442F-8F89-174282A6F1DD} = {80F5FC0A-CC49-415D-B88B-958838EB3369}
 	EndGlobalSection
 EndGlobal

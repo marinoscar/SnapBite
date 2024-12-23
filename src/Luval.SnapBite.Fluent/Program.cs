@@ -31,7 +31,6 @@ builder.Services.AddHttpClient();
 builder.Services.AddHttpContextAccessor();
 
 
-
 // AuthMate: add the AuthMate Services
 builder.Services.AddAuthMateServices((f) => {
     //Configures database connection
@@ -48,7 +47,7 @@ builder.Services.AddAuthMateGoogleAuth(new GoogleOAuthConfiguration()
     // client id from your config file
     ClientId = ConfigHelper.GetValueAsString("Authentication:Google:ClientID"),
     // the client secret from your config file
-    ClientSecret = ConfigHelper.GetValueAsString("Authentication:Google:ClientSecret")
+    ClientSecret = ConfigHelper.GetValueAsString("Authentication:Google:ClientSecret"),
 });
 
 
