@@ -30,6 +30,8 @@ builder.Services.AddControllers();
 builder.Services.AddHttpClient();
 builder.Services.AddHttpContextAccessor();
 
+var context = new PostgresAuthMateContext(ConfigHelper.GetValueAsString("ConnectionString:Authorization"));
+context.InitializeDbAsync("oscar.marin.saenz@gmail.com").Wait();
 
 // AuthMate: add the AuthMate Services
 builder.Services.AddAuthMateServices((f) => {
